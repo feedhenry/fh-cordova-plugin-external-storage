@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.feedhenry.plugins.externalstorage"
+        version="0.0.1">
+
+        <name>External Storage</name>
+
+                <description>
+                        This plugin allows you to enable external storage on Android
+                </description>
+
+                <license>MIT</license>
+
+        <engines>
+                <engine name="cordova" version=">=2.8.0" />
+        </engines>
+
+        <!-- android -->
+        <platform name="android">
+                <config-file target="config.xml" parent="/*">
+                        <feature name="ExternalStorage">
+                                <param name="android-package" value="com.feedhenry.phonegap.externalstorage.SandboxedExternalStorage" />
+                        </feature>
+                </config-file>
+
+                <js-module src="www/android/ExternalStorage.js" name="ExternalStorage">
+                        <clobbers target="navigator.externalstorage" />
+                </js-module>
+
+                <source-file src="src/android/SandboxedExternalStorage.java" target-dir="src/com/feedhenry/phonegap/externalstorage" />
+        </platform>
+
+</plugin>
